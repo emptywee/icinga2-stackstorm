@@ -7,8 +7,8 @@ Please, read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icin
 
 ## Configuration
 
-`api_state_change_url` - URL to the API stream, e.g. `https://localhost:5665/v1/events?queue=state_change&types=StateChange`
-`api_state_change_user` - API user name created on the Icinga2 host, which you are going to connect to, e.g. `root`
-`api_state_change_password` - password for the user name mentioned above
+* `api_state_change_url` - URL to the API stream, e.g. `https://localhost:5665/v1/events?queue=state_change&types=StateChange`
+* `api_state_change_user` - API user name created on the Icinga2 host, which you are going to connect to, e.g. `root`
+* `api_state_change_password` - password for the user name mentioned above
 
 
