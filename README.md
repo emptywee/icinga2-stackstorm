@@ -15,9 +15,9 @@ Please, read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icin
 
 ## Actions
 
-* get_status - retrieves status from Icinga2 host
-* get_host - retrieves host objects from Icinga2 host, a list of `hosts` can be provided to narrow down the result
-* get_service - retrieves service objects from Icinga2 host, a list of `services` can be provided to narrow down the result
+* `get_status` - retrieves status from Icinga2 host
+* `get_host` - retrieves host objects from Icinga2 host, a list of `hosts` can be provided to narrow down the result
+* `get_service` - retrieves service objects from Icinga2 host, a list of `services` can be provided to narrow down the result
 
 ## Sensor payload
 
