@@ -21,7 +21,7 @@ Please, read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icin
 
 ## Sensor payload
 
-As of now, sensor only configured to catch `StateChange` events from Icinga2 host. Typical event of such would consist of:
+As of now, sensor is configured to catch only `StateChange` events from Icinga2 host. Typical event of such would consist of:
 
 ```
 {
