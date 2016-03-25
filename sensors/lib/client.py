@@ -88,8 +88,12 @@ class Client:
         # Network error, use linear back off up to 16 seconds
         if self.keep_trying == 0:
           continue
-        print 'Network error: %s' % self.conn.errstr()
-        print 'Waiting %s seconds before trying again' % backoff_network_error
+        if self._sensor is not None:
+          self._sensor.logger.info('Network error: %s', self.conn.errstr())
+          self._sensor.logger.info('Waiting %s seconds before trying again', backoff_network_error)
+        else:
+          print 'Network error: %s' % self.conn.errstr()
+          print 'Waiting %s seconds before trying again' % backoff_network_error
         time.sleep(backoff_network_error)
         backoff_network_error = min(backoff_network_error + 1, 16)
         continue
@@ -97,13 +101,36 @@ class Client:
       sc = self.conn.getinfo(pycurl.HTTP_CODE)
       if sc == 420:
         # Rate limit, use exponential back off starting with 1 minute and double each attempt
-        print 'Rate limit, waiting %s seconds' % backoff_rate_limit
+        if self._sensor is not None:
+          self._sensor.logger.info('Rate limit, waiting %s seconds', backoff_rate_limit)
+        else:
+          print 'Rate limit, waiting %s seconds' % backoff_rate_limit
+        time.sleep(backoff_rate_limit)
+        backoff_rate_limit *= 2
+      elif sc == 401:
+        # Authentication error
+        if self._sensor is not None:
+          self._sensor.logger.info('Authentication error, check user/password, waiting %s seconds', backoff_rate_limit)
+        else:
+          print 'Authentication error, check user/password, waiting %s seconds' % backoff_rate_limit
+        time.sleep(backoff_rate_limit)
+        backoff_rate_limit *= 2
+      elif sc == 404:
+        # Authorization error
+        if self._sensor is not None:
+          self._sensor.logger.info('Authorization error, check permissions, waiting %s seconds', backoff_rate_limit)
+        else:
+          print 'Authorization error, check permissions, waiting %s seconds' % backoff_rate_limit
         time.sleep(backoff_rate_limit)
         backoff_rate_limit *= 2
       else:
         # HTTP error, use exponential back off up to 320 seconds
-        print 'HTTP error %s, %s' % (sc, self.conn.errstr())
-        print 'Waiting %s seconds' % backoff_http_error
+        if self._sensor is not None:
+          self._sensor.logger.info('HTTP error %s, %s', sc, self.conn.errstr())
+          self._sensor.logger.info('Waiting %s seconds', backoff_http_error)
+        else:
+          print 'HTTP error %s, %s' % (sc, self.conn.errstr())
+          print 'Waiting %s seconds' % backoff_http_error
         time.sleep(backoff_http_error)
         backoff_http_error = min(backoff_http_error * 2, 320)
 

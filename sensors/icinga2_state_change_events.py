@@ -6,7 +6,7 @@ from st2reactor.sensor.base import Sensor
 class Icinga2StateChangeSensor(Sensor):
   def setup(self):
     self.logger = self._sensor_service.get_logger(__name__)
-    self.api_url = self._config['api_state_change_url']
+    self.api_url = self._config['api_url'] + '/events?queue=state_change&types=StateChange'
     self.api_user = self._config['api_state_change_user']
     self.api_password = self._config['api_state_change_password']
     self.trigger_name = 'event.state_change'
@@ -51,9 +51,9 @@ class Icinga2StateChangeSensor(Sensor):
 
 if __name__ == '__main__':
 
-  STREAM_URL = 'https://localhost:5665/v1/events?queue=test&types=StateChange'
+  STREAM_URL = 'https://icinga2dev.stack.qadev.corp:5665/v1/events?queue=test&types=StateChange'
   USER = 'root'
-  PASS = '123456'
+  PASS = 'd72d8238c9a35b73'
 
   client = Client(None, STREAM_URL, USER, PASS)
   client.setup_connection()

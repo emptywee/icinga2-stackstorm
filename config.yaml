@@ -1,5 +1,7 @@
 ### Place configuration data for your pack here.
 ---
 api_state_change_url: "https://localhost:5665/v1/events?queue=state_change&types=StateChange"
-api_state_change_user: "root"
+api_state_change_user: "operator"
 api_state_change_password: "123456"
+api_user: "root"
+api_password: "123456"

@@ -10,8 +10,16 @@ Please, read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icin
 * `api_state_change_url` - URL to the API stream, e.g. `https://localhost:5665/v1/events?queue=state_change&types=StateChange`
 * `api_state_change_user` - API user name created on the Icinga2 host, which you are going to connect to, e.g. `root`
 * `api_state_change_password` - password for the user name mentioned above
+* `api_user` - API user name to query Icinga2 host for objects
+* `api_password` - password for the API user
 
-## Payload
+## Actions
+
+* get_status - retrieves status from Icinga2 host
+* get_host - retrieves host objects from Icinga2 host, a list of `hosts` can be provided to narrow down the result
+* get_service - retrieves service objects from Icinga2 host, a list of `services` can be provided to narrow down the result
+
+## Sensor payload
 
 Typical event would consist of:
 
@@ -85,4 +93,4 @@ Typical event would consist of:
 }
 ```
 
-Currently, sensor takes `host`, `service`, `state`, `state_type`, `type` and `check_result` and passes it as a payload to the trigger. All that data can be used in the rule and passed to actions as well.
+Currently, sensor takes the `host`, `service`, `state`, `state_type`, `type` and `check_result` variables and passes it as a payload to the trigger. All that data can be used in the rule and passed to actions as well.
