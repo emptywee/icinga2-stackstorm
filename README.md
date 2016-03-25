@@ -1,9 +1,9 @@
-# Icinga2 Integration Pack
+# Icinga2 Integration Pack for Stackstorm
 
 ## Description
 
-Icinga2 version 2.4.0 introduced API and since then it was possible to subscribe to Icinga2 events. This pack does exactly that. So far only StateChange event type is supported.
-Please, read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icinga2/latest/doc/module/icinga2/chapter/icinga2-api#icinga2-api for more information on Icinga2 API.
+Icinga2 version 2.4.0 introduced API and since then it's been possible to subscribe to Icinga2 events. This pack does exactly that. So far only `StateChange` event type is supported.
+Please, read http://docs.icinga.org/icinga2/latest/doc/module/icinga2/toc#!/icinga2/latest/doc/module/icinga2/chapter/icinga2-api#icinga2-api for more information on Icinga2 API. Also, won't hurt to visit http://docs.stackstorm.com/ for more details on Stackstorm.
 
 ## Configuration
 
